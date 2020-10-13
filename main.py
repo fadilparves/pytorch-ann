@@ -94,13 +94,13 @@ def round_tensor(t, decimal_places=3):
 
 epochs = 1000
 
-for epochs in range(epochs):
+for epoch in range(epochs):
     y_pred = net(X_train)
 
     y_pred = torch.squeeze(y_pred)
     train_loss = criterion(y_pred, y_train)
     
-    if epochs % 100 == 0:
+    if epoch % 100 == 0:
         train_acc = calculate_accuracy(y_train, y_pred)
 
         y_test_pred = net(X_test)
@@ -121,6 +121,10 @@ for epochs in range(epochs):
     train_loss.backward()
 
     optimizer.step()
+
+PATH = 'ann.pth'
+
+torch.save(net, PATH)
 
 
 
