@@ -73,5 +73,15 @@ criterion = nn.BCELoss()
 
 optimizer = optim.Adam(net.parameters(), lr=0.001)
 
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
+X_train = X_train.to(device)
+y_train = y_train.to(device)
+
+X_test = X_test.to(device)
+y_test = y_test.to(device)
+
+net = net.to(device)
+
+criterion = criterion.to(device)
 
