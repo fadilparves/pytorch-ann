@@ -49,3 +49,12 @@ y = df[['RainTomorrow']]
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=RANDOM_SEED, shuffle=True)
 
+#Convert all data to tensor
+X_train = torch.from_numpy(X_train.to_numpy()).float()
+y_train = torch.squeeze(torch.from_numpy(y_train.to_numpy()).float())
+
+X_test = torch.from_numpy(X_test.to_numpy()).float()
+y_test = torch.squeeze(torch.from_numpy(y_test.to_numpy()).float())
+
+print(X_train.shape, y_train.shape)
+print(X_test.shape, y_test.shape)
