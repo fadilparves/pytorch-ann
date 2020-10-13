@@ -10,8 +10,8 @@ from pylab import rcParams
 import matplotlib.pyplot as plt
 from matplotlib import rc
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import confusion_matrix, classification_report
 from visualizer import ann_viz
+from sklearn.metrics import confusion_matrix, classification_report
 
 sns.set(style='whitegrid', palette='muted', font_scale=1.2)
 
@@ -126,5 +126,6 @@ PATH = 'ann.pth'
 
 torch.save(net, PATH)
 
-
+classes = ['No rain', 'Raining']
+y_pred = net(X_test)
 
