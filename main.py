@@ -129,3 +129,7 @@ torch.save(net, PATH)
 classes = ['No rain', 'Raining']
 y_pred = net(X_test)
 
+y_pred = y_pred.ge(.5).view(-1).cpu()
+y_test = y_test.cpu()
+
+print(classification_report(y_test, y_pred, target_names=classes))
