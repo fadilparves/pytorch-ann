@@ -92,3 +92,35 @@ def calculate_accuracy(y_true, y_pred):
 def round_tensor(t, decimal_places=3):
     return round(t.item(), decimal_places)
 
+epochs = 1000
+
+for epochs in range(epochs):
+    y_pred = net(X_train)
+
+    y_pred = torch.squeeze(y_pred)
+    train_loss = criterion(y_pred, y_train)
+    
+    if epochs % 100 == 0:
+        train_acc = calculate_accuracy(y_train, y_pred)
+
+        y_test_pred = net(X_test)
+        y_test_pred = torch.squeeze(y_test_pred)
+
+        test_loss = criterion(y_test_pred, y_test)
+
+        test_acc = calculate_accuracy(y_test, y_test_pred)
+
+        print(
+        f'''epoch {epoch}
+        Train set - loss: {round_tensor(train_loss)}, accuracy: {round_tensor(train_acc)}
+        Test  set - loss: {round_tensor(test_loss)}, accuracy: {round_tensor(test_acc)}
+        ''')
+    
+    optimizer.zero_grad()
+
+    train_loss.backward()
+
+    optimizer.step()
+
+
+
