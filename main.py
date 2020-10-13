@@ -69,5 +69,9 @@ class Net(nn.Module):
 
 net = Net(X_train.shape[1])
 
-# ann_viz(net, view=True)
+criterion = nn.BCELoss()
+
+optimizer = optim.Adam(net.parameters(), lr=0.001)
+
+
 
