@@ -85,3 +85,10 @@ net = net.to(device)
 
 criterion = criterion.to(device)
 
+def calculate_accuracy(y_true, y_pred):
+    predicted = y_pred.ge(.5).view(-1)
+    return (y_true == predicted).sum().float() / len(y_true)
+
+def round_tensor(t, decimal_places=3):
+    return round(t.item(), decimal_places)
+
