@@ -24,3 +24,22 @@ rcParams['figure.figsize'] = 12, 8
 RANDOM_SEED = 42
 np.random.seed(RANDOM_SEED)
 torch.manual_seed(RANDOM_SEED)
+
+df = pd.read_csv("weatherAUS.csv")
+print(df.shape)
+print(df.head(10))
+print(df.info())
+
+#Remove unwanted data for simplicity purpose
+cols = ['Rainfall', 'Humidity3pm', 'Pressure9am', 'RainToday', 'RainTomorrow']
+df = df[cols]
+
+df['RainToday'].replace({'No': 0, 'Yes': 1}, inplace=True)
+df['RainTomorrow'].replace({'No': 0, 'Yes': 1}, inplace=True)
+
+df = df.dropna(how='any')
+
+sns.countplot(df.RainTomorrow)
+plt.show()
+
+print(df.head(10))
