@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 from matplotlib import rc
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix, classification_report
+from visualizer import ann_viz
 
 sns.set(style='whitegrid', palette='muted', font_scale=1.2)
 
@@ -39,11 +40,6 @@ df['RainTomorrow'].replace({'No': 0, 'Yes': 1}, inplace=True)
 
 df = df.dropna(how='any')
 
-sns.countplot(df.RainTomorrow)
-plt.show()
-
-print(df.head(10))
-
 X = df[['Rainfall', 'Humidity3pm', 'RainToday', 'Pressure9am']]
 y = df[['RainTomorrow']]
 
@@ -58,3 +54,20 @@ y_test = torch.squeeze(torch.from_numpy(y_test.to_numpy()).float())
 
 print(X_train.shape, y_train.shape)
 print(X_test.shape, y_test.shape)
+
+class Net(nn.Module):
+    def __init__(self, n_features):
+        super(Net, self).__init__()
+        self.fc1 = nn.Linear(n_features, 5)
+        self.fc2 = nn.Linear(5,3)
+        self.fc3 = nn.Linear(3,1)
+
+    def forward(self, x):
+        x = F.relu(self.fc1(x))
+        x = F.relu(self.fc2(x))
+        return torch.sigmoid(self.fc3(x))
+
+net = Net(X_train.shape[1])
+
+# ann_viz(net, view=True)
+

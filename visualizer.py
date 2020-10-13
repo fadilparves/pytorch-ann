@@ -13,6 +13,10 @@ def ann_viz(model, view=True, filename="network.gv"):
         title: A title for the graph
     """
     from graphviz import Digraph
+    import torch
+
+    HAPPY_COLORS_PALETTE = ["#01BEFE", "#FFDD00", "#FF7D00", "#FF006D", "#93D30C", "#8F0\
+0FF"]
 
     input_layer = 0
     hidden_layers_nr = 0

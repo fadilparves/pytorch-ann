@@ -1,0 +1,89 @@
+digraph g {
+	graph [nodesep=0.5 rankdir=LR ranksep=0 splines=false]
+	edge [arrowhead=none color="#707070" penwidth=2]
+	subgraph cluster_input {
+		node [color="#FF006D" fontcolor="#FF006D" shape=circle style=filled width=0.65]
+		color=white
+		1
+		labeljust=1
+		label="Input Layer" labelloc=bottom
+		rank=same
+		2
+		labeljust=1
+		label="Input Layer" labelloc=bottom
+		rank=same
+		3
+		labeljust=1
+		label="Input Layer" labelloc=bottom
+		rank=same
+		4
+		labeljust=1
+		label="Input Layer" labelloc=bottom
+		rank=same
+	}
+	1 -> 5
+	2 -> 5
+	3 -> 5
+	4 -> 5
+	1 -> 6
+	2 -> 6
+	3 -> 6
+	4 -> 6
+	1 -> 7
+	2 -> 7
+	3 -> 7
+	4 -> 7
+	1 -> 8
+	2 -> 8
+	3 -> 8
+	4 -> 8
+	1 -> 9
+	2 -> 9
+	3 -> 9
+	4 -> 9
+	subgraph cluster_1 {
+		color=white
+		rank=same
+		label="Hidden Layer 1" labeljust=right labelloc=b
+		5 [color="#01BEFE" fontcolor="#01BEFE" shape=circle style=filled width=0.65]
+		6 [color="#01BEFE" fontcolor="#01BEFE" shape=circle style=filled width=0.65]
+		7 [color="#01BEFE" fontcolor="#01BEFE" shape=circle style=filled width=0.65]
+		8 [color="#01BEFE" fontcolor="#01BEFE" shape=circle style=filled width=0.65]
+		9 [color="#01BEFE" fontcolor="#01BEFE" shape=circle style=filled width=0.65]
+	}
+	5 -> 10
+	6 -> 10
+	7 -> 10
+	8 -> 10
+	9 -> 10
+	5 -> 11
+	6 -> 11
+	7 -> 11
+	8 -> 11
+	9 -> 11
+	5 -> 12
+	6 -> 12
+	7 -> 12
+	8 -> 12
+	9 -> 12
+	subgraph cluster_2 {
+		color=white
+		rank=same
+		label="Hidden Layer 2" labeljust=right labelloc=b
+		10 [color="#01BEFE" fontcolor="#01BEFE" shape=circle style=filled width=0.65]
+		11 [color="#01BEFE" fontcolor="#01BEFE" shape=circle style=filled width=0.65]
+		12 [color="#01BEFE" fontcolor="#01BEFE" shape=circle style=filled width=0.65]
+	}
+	10 -> 13
+	11 -> 13
+	12 -> 13
+	subgraph cluster_output {
+		node [color="#2ecc71" fontcolor="#2ecc71" shape=circle style=filled]
+		color=white
+		rank=same
+		labeljust=1
+		13 [color="#93D30C" fontcolor="#93D30C" shape=circle style=filled width=0.65]
+		label="Output Layer" labelloc=bottom
+	}
+	arrowShape=none
+}
