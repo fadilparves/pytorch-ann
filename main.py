@@ -43,3 +43,9 @@ sns.countplot(df.RainTomorrow)
 plt.show()
 
 print(df.head(10))
+
+X = df[['Rainfall', 'Humidity3pm', 'RainToday', 'Pressure9am']]
+y = df[['RainTomorrow']]
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=RANDOM_SEED, shuffle=True)
+
